@@ -53,6 +53,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Get artifact from build step
+        uses: actions/download-artifact@v3
         with:
           name: github-pages
       - name: Configure AWS Credentials
