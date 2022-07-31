@@ -75,6 +75,8 @@ jobs:
           aws-region: ${{secrets.REGION}}
       - name: change directory
         run: cd ${{steps.download_artifact.outputs.download-path}}
+      - name: unzip archive
+        run: tar -xf archive.tar
       - name: check files
         run: ls
       - name: Deploy
