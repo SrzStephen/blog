@@ -47,6 +47,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+  
+  check_gh_deploy:
+    runs-on: ubuntu-22.04
+    needs: deploy_pages
+    steps:
+      - name: Check github.io page
+        uses: lakuapik/gh-actions-http-status@v1
+        with:
+          expected: '[200]'
+          sites: '["https://phteven.space/"]'
 
   deploy_aws:
     needs: [build]
@@ -56,6 +66,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: github-pages
+      - name: change directory
+        run: cd blog
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
