@@ -64,7 +64,7 @@ jobs:
     steps:
       - name: Get artifact from build step
         uses: actions/download-artifact@v3
-        name: download_artifact
+        id: download_artifact
         with:
           name: github-pages
       - name: Configure AWS Credentials
