@@ -31,7 +31,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v1
         with:
-          static_site_generator: gatsby
+      static_site_generator: gatsby
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -47,6 +47,14 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
+  deploy_aws:
+    needs: [build]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Get artifact from build step
+        with:
+          name: github-pages
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
