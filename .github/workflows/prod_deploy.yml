@@ -28,7 +28,8 @@ jobs:
         uses: jonelantha/gatsby-s3-action@v1
         with:
           dest-s3-bucket: ${{secrets.BUCKET_NAME}}
-            - uses: actions/checkout@v1
+      - uses: actions/checkout@v1
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: main
