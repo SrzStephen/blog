@@ -45,6 +45,7 @@ jobs:
         uses: actions/deploy-pages@v1
 
   deploy_aws:
+    needs: [build]
     runs-on: ubuntu-22.04
     steps:
       - name: Configure AWS Credentials
