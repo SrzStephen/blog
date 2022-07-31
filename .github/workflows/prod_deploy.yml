@@ -4,8 +4,17 @@ on:
   push:
     branches:
       - main
+    workflow_dispatch:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+  concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -18,6 +27,25 @@ jobs:
         run: |
           npm ci --legacy-peer-deps
           npm run build
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v1
+        with:
+          static_site_generator: gatsby
+          
+  deploy_pages:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
+  deploy_aws:
+    steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -28,8 +56,3 @@ jobs:
         uses: jonelantha/gatsby-s3-action@v1
         with:
           dest-s3-bucket: ${{secrets.BUCKET_NAME}}
-      - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@v2
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: main
