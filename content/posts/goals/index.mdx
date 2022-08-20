@@ -1,0 +1,45 @@
+---
+title: Goals
+date: 2022-08-18
+slug: "/goals-of-blog"
+canonicalUrl: "https://phteven.space"
+tags:
+  - Meta
+---
+
+import YoutubeEmbed from "../../components/Youtube/Youtube.tsx";
+
+The inspiration for this blog is the talk by Troy Hunt that I find myself going back to
+a few times every year as a lot of what he says really resonates with me.
+
+<YoutubeEmbed
+    embed_id="PBR5shDXVUI"
+    title="Hack Your Career"
+/>
+
+I find that it's extremely useful to list goals when trying to do something new since
+at some point you're going to have to make decisions, and a set of guiding goals
+generally helps with that.
+
+1. Understand the technology I write about well enough to explain it to others.
+2. Practice writing coherent technical documentation.
+3. Have examples of the things that I do to back up what I say.
+4. Be able to point myself and others to things I write here when asked for explanations.
+
+
+I've done a few things to help me not get super distracted when trying to achieve these goals:
+* I haven't started from scratch, I'm using [Gatsby](https://www.gatsbyjs.com/) and
+[LekoArts Template](https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-minimal-blog)
+as a starting point to help focus on content.
+* I chose a template which allows me to write the blog in markdown. It also allows me to write arbitrary [React Components](https://reactjs.org/docs/react-component.html)
+and embed them for more dynamic content. The YouTube video in this page is actually one such component and was defined wth
+```jsx
+import YoutubeEmbed from "../../components/Youtube/Youtube.tsx";
+<YoutubeEmbed
+    embed_id="PBR5shDXVUI"
+    title="Hack Your Career"
+/>
+```
+* I have set up a set of GitHub actions to auto build and deploy this blog onto Github pages. It's free and takes no
+additional effort on my part to maintain.
+* I've set up some Google Analytics from the beginning to help me track whether anyone views the content.

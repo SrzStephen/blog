@@ -7,11 +7,11 @@ module.exports = {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/gatsby-config.js
-    siteTitle: `Stephen Blog Test`,
+    siteTitle: `Phteven Space`,
     siteTitleAlt: `Stephen Blog`,
-    siteHeadline: `Stephen Blog Test Headline`,
+    siteHeadline: `Stephen Blog`,
     siteUrl: `https://phteven.space`,
-    siteDescription: `Stephen is testing blogging stuff`,
+    siteDescription: `Stephen technical blog and notes`,
     siteLanguage: `en`,
     siteImage: `/banner.jpg`,
     author: `Stephen Mott`,
@@ -25,7 +25,6 @@ module.exports = {
           "G-R1YMJYGSX6"
         ],
         gtagConfig: {
-          optimize_id: "OPT_CONTAINER_ID",
           anonymize_ip: true,
           cookie_expires: 0,
         },
@@ -52,20 +51,12 @@ module.exports = {
           {
             title: `About`,
             slug: `/about`,
-          },
-          {            
-            title: `Projects`,
-            slug: `/projects`,
-          },
+          }
         ],
         externalLinks: [
           {
             name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
-          },
-          {
-            name: `Homepage`,
-            url: `https://www.lekoarts.de?utm_source=minimal-blog&utm_medium=Starter`,
+            url: `https://twitter.com/phtevem`,
           },
           {
             name: `Github`,
