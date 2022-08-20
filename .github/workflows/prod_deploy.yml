@@ -58,28 +58,28 @@ jobs:
           expected: '[200]'
           sites: '["https://phteven.space/"]'
 
-  deploy_aws:
-    needs: [build]
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Get artifact from build step
-        uses: actions/download-artifact@v3
-        id: download_artifact
-        with:
-          name: github-pages
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{secrets.REGION}}
-      - name: change directory
-        run: cd ${{steps.download_artifact.outputs.download-path}}
-      - name: unzip archive
-        run: tar -xf archive.tar
-      - name: check files
-        run: ls
-      - name: Deploy
-        uses: jonelantha/gatsby-s3-action@v1
-        with:
-          dest-s3-bucket: ${{secrets.BUCKET_NAME}}
+#  deploy_aws:
+#    needs: [build]
+#    runs-on: ubuntu-22.04
+#    steps:
+#      - name: Get artifact from build step
+#        uses: actions/download-artifact@v3
+#        id: download_artifact
+#        with:
+#          name: github-pages
+#      - name: Configure AWS Credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: ${{secrets.REGION}}
+#      - name: change directory
+#        run: cd ${{steps.download_artifact.outputs.download-path}}
+#      - name: unzip archive
+#        run: tar -xf archive.tar
+#      - name: check files
+#        run: ls
+#      - name: Deploy
+#        uses: jonelantha/gatsby-s3-action@v1
+#        with:
+#          dest-s3-bucket: ${{secrets.BUCKET_NAME}}
